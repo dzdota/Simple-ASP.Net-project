@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace Task.Models
 {
@@ -11,7 +12,7 @@ namespace Task.Models
         [Required, StringLength(20)]
         public string Version { get; set; }
 
-        [Required]
+        [Key, Required]
         public int Size { get; set; }
 
         [Required ,StringLength(100)]

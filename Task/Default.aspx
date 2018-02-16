@@ -1,15 +1,22 @@
 ﻿<%@ Page Title="Table" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Task._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h1>This place from table</h1>
-    <asp:DataGrid id="datagrid" runat="server" AllowSorting="True"
-                  AutoGenerateColumns="true">
-        <%-- <Columns>
-           <asp:BoundColumn DataField="ProductName" 
+    <asp:DataGrid id="datagrid" runat="server" 
+        AllowSorting="True"
+        AutoGenerateColumns="true" 
+        OnSortCommand="datagrid_SortCommand">
+        <HeaderStyle 
+            HorizontalAlign="Center" 
+            ForeColor="#FFFFFF" 
+            BackColor="#000080" 
+            Font-Bold=true
+            CssClass="TableHeader" />
+        <Columns>
+           <asp:BoundColumn DataField="Name" 
                HeaderText="Name"  
-               SortExpression="ProductName"></asp:BoundColumn>
+               SortExpression="Name"></asp:BoundColumn>
            <asp:BoundColumn DataField="CompanyName" 
-               HeaderText="CompanyName"  
+               HeaderText="Company Name"  
                SortExpression="CompanyName">
            </asp:BoundColumn>
            <asp:BoundColumn DataField="Version" 
@@ -20,9 +27,9 @@
                HeaderText="Size"  
                SortExpression="Size">
            </asp:BoundColumn>
-           <asp:BoundColumn DataField="Release data" 
+           <asp:BoundColumn DataField="ReleaseData" 
                HeaderText="Release data"  
-               SortExpression="Release data">
+               SortExpression="ReleaseData">
            </asp:BoundColumn>
            <asp:BoundColumn DataField="URL" 
                HeaderText="URL"  
@@ -32,7 +39,6 @@
                HeaderText="Vendor"  
                SortExpression="Vendor">
            </asp:BoundColumn>
-        </Columns>--%>
+        </Columns>
     </asp:DataGrid>
-    <h1>This place from table end</h1>
 </asp:Content>

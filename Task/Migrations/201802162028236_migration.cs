@@ -3,7 +3,7 @@ namespace Task.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class migartion : DbMigration
+    public partial class migration : DbMigration
     {
         public override void Up()
         {
@@ -11,13 +11,13 @@ namespace Task.Migrations
                 "dbo.Drivers",
                 c => new
                     {
-                        Size = c.Int(nullable: false, identity: true),
                         ProductName = c.String(nullable: false, maxLength: 100),
                         Version = c.String(nullable: false, maxLength: 20),
+                        Size = c.Long(nullable: false),
                         CompanyName = c.String(nullable: false, maxLength: 100),
                         ProductCategory = c.String(nullable: false, maxLength: 100),
                     })
-                .PrimaryKey(t => t.Size);
+                .PrimaryKey(t => t.ProductName);
             
             CreateTable(
                 "dbo.Products",
@@ -35,7 +35,7 @@ namespace Task.Migrations
                 c => new
                     {
                         ProductId = c.String(nullable: false, maxLength: 40),
-                        RealeseOn = c.String(nullable: false, maxLength: 30),
+                        RealeseOn = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.ProductId);
             

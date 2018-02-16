@@ -59,21 +59,6 @@
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
-            <div id="CategoryMenu" style="text-align: center">       
-                <asp:ListView ID="categoryList"  
-                    ItemType="Task.Models.Product" 
-                    runat="server"
-                    SelectMethod="GetProducts" >
-                    <ItemTemplate>
-                        <b style="font-size: large; font-style: normal">
-                            <a href="/Default.aspx?id=<%#: Item.ProductId %>">
-                            <%#: Item.ProductName %>
-                            </a>
-                        </b>
-                    </ItemTemplate>
-                    <ItemSeparatorTemplate>  |  </ItemSeparatorTemplate>
-                </asp:ListView>
-            </div>
             <hr />
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - My ASP.NET Application</p>

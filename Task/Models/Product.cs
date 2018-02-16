@@ -6,11 +6,10 @@ namespace Task.Models
 {
     public class Product
     {
-
         [Required, ScaffoldColumn(false), StringLength(40)]
         public string ProductId { get; set; }
 
-        [Required, StringLength(100), Display(Name = "Name")]
+        [Required, StringLength(100), Display(Name = "Name")]   
         public string ProductName { get; set; }
 
         [StringLength(200), Display(Name = "Url")]

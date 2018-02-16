@@ -9,7 +9,7 @@ namespace Task.Models
         [Key,Required, ScaffoldColumn(false), Display(Name = "Id"), StringLength(40)]
         public string ProductId { get; set; }
 
-        [Required, StringLength(30)]
-        public string RealeseOn { get; set; }
+        [Required]
+        public DateTime RealeseOn { get; set; }
     }
 }

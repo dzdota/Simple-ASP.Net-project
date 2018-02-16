@@ -10,7 +10,7 @@ namespace Task.Migrations
     using System.Text;
     using Task.Models;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Task.Models.ProductContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<ProductContext>
     {
         public Configuration()
         {
@@ -34,15 +34,23 @@ namespace Task.Migrations
         {
             var release = new List<ProductReleaseDates>();
 
-            using (FileStream fs = new FileStream("Source\\products - release dates.csv", FileMode.Open))
+            using (FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + "\\Source\\products - release dates.csv", FileMode.Open))
             using (StreamReader streamReader = new StreamReader(fs, Encoding.ASCII))
             {
                 string line;
                 while ((line = streamReader.ReadLine()) != null)
                 {
-                    line = line.Replace(" ", string.Empty);
-                    string[] element = line.Split('\n');
-
+                    string[] element = line.Split(';');
+                    if (element.Length == 2)
+                    {
+                        string[] dataelement = element[1].Split(' ','.','-',':');
+                        release.Add(new ProductReleaseDates()
+                        {
+                            ProductId = element[0],
+                            RealeseOn = new DateTime(int.Parse(dataelement[0]), int.Parse(dataelement[1]), int.Parse(dataelement[2]),
+                            int.Parse(dataelement[3]), int.Parse(dataelement[4]), int.Parse(dataelement[5]), int.Parse(dataelement[6]))
+                        });
+                    }
                 }
 
             }
@@ -52,45 +60,71 @@ namespace Task.Migrations
         {
             var drivers = new List<Driver>();
 
-            using (FileStream fs = new FileStream("Source\\drivers.json", FileMode.Open))
+            using (FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + "\\Source\\drivers.json", FileMode.Open))
             using (StreamReader streamReader = new StreamReader(fs, Encoding.ASCII))
             using (JsonReader reader = new JsonTextReader(new StringReader(streamReader.ReadToEnd())))
             {
+                while (reader.Read() && (reader.Value == null || reader.Value as string != "Properties"))
+                    ;
+                var driver = new Driver();
                 while (reader.Read())
                 {
-                    Console.Write(reader.ValueType);
+                    if (reader.Value != null && reader.Value as string == "Properties")
+                    {
+                        drivers.Add(driver);
+                        driver = new Driver();
+                    }
+                    else if(reader.ValueType == typeof(string))
+                        switch (reader.Value as string)
+                        {
+                            case "CompanyName":
+                                reader.Read();
+                                driver.CompanyName = reader.Value == null ? "Gamanet A.S." : reader.Value as string;
+                                break;
+                            case "ProductName":
+                                reader.Read();
+                                driver.ProductName = reader.Value as string;
+                                break;
+                            case "Version":
+                                reader.Read();
+                                driver.Version = reader.Value as string;
+                                break;
+                            case "Size":
+                                reader.Read();
+                                driver.Size = (long)reader.Value;
+                                break;
+                            case "ProductCategory":
+                                reader.Read();
+                                driver.ProductCategory = reader.Value as string;
+                                break;
+                        }
                 }
             }
-
             return drivers;
         }
         private static List<Product> GetProducts()
         {
             var products = new List<Product>();
 
-            products.Add(new Product()
-            {
-                ProductId = "id21",
-                ProductName = "name21"
-            });
-            products.Add(new Product()
-            {
-                ProductId = "id22",
-                ProductName = "name22"
-            });
 
-            products.Add(new Product()
+            using (FileStream fs = new FileStream(AppDomain.CurrentDomain.BaseDirectory + "\\Source\\products.csv", FileMode.Open))
+            using (StreamReader streamReader = new StreamReader(fs, Encoding.ASCII))
             {
-                ProductId = "id23",
-                ProductName = "name23"
-            });
+                string line;
+                while ((line = streamReader.ReadLine()) != null)
+                {
+                    string[] element = line.Split(';');
+                    if (element.Length == 4)
+                        products.Add(new Product()
+                        {
+                            ProductId = element[0],
+                            ProductName = element[1],
+                            Url = element[2] == "NULL" ? null: element[2],
+                            VendorContact = element[3] == "NULL" ? null : element[3]
+                        });
+                }
 
-            products.Add(new Product()
-            {
-                ProductId = "id24",
-                ProductName = "name24"
-            });
-
+            }
 
             return products;
         }

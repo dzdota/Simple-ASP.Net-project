@@ -132,8 +132,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddProduct.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Grid.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
@@ -181,11 +183,17 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddProduct.aspx.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddProduct.aspx.designer.cs">
+      <DependentUpon>AddProduct.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -193,9 +201,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201802162028236_migration.cs" />
-    <Compile Include="Migrations\201802162028236_migration.Designer.cs">
-      <DependentUpon>201802162028236_migration.cs</DependentUpon>
+    <Compile Include="Migrations\201802172216440_migration.cs" />
+    <Compile Include="Migrations\201802172216440_migration.Designer.cs">
+      <DependentUpon>201802172216440_migration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Driver.cs" />
@@ -239,8 +247,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201802162028236_migration.resx">
-      <DependentUpon>201802162028236_migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201802172216440_migration.resx">
+      <DependentUpon>201802172216440_migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

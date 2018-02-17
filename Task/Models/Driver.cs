@@ -10,10 +10,9 @@ namespace Task.Models
         [Key, Required, StringLength(100), Display(Name = "Name")]
         public string ProductName { get; set; }
 
-        [Required, StringLength(20)]
+        [StringLength(20)]
         public string Version { get; set; }
 
-        [Required]
         public long Size { get; set; }
 
         [Required ,StringLength(100)]

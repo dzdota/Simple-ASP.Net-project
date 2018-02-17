@@ -1,0 +1,19 @@
+﻿body {
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+}
+
+.box {
+    background-color: #808080;
+    color: #fff;
+    border: 10px;
+    margin 5px;
+}
+
+.box buttom {
+    right: 0;
+    bottom 0;
+}

@@ -12,7 +12,7 @@ namespace Task.Migrations
                 c => new
                     {
                         ProductName = c.String(nullable: false, maxLength: 100),
-                        Version = c.String(nullable: false, maxLength: 20),
+                        Version = c.String(maxLength: 20),
                         Size = c.Long(nullable: false),
                         CompanyName = c.String(nullable: false, maxLength: 100),
                         ProductCategory = c.String(nullable: false, maxLength: 100),

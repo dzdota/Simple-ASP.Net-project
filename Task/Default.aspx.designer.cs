@@ -13,6 +13,24 @@ namespace Task {
     public partial class _Default {
         
         /// <summary>
+        /// CompanyFilter control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label CompanyFilter;
+        
+        /// <summary>
+        /// CompanyNameList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList CompanyNameList;
+        
+        /// <summary>
         /// datagrid control.
         /// </summary>
         /// <remarks>
@@ -20,5 +38,14 @@ namespace Task {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DataGrid datagrid;
+        
+        /// <summary>
+        /// CategoryList control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBoxList CategoryList;
     }
 }

@@ -1,44 +1,30 @@
 ﻿<%@ Page Title="Table" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Task._Default" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <asp:DataGrid id="datagrid" runat="server" 
-        AllowSorting="True"
-        AutoGenerateColumns="true" 
-        OnSortCommand="datagrid_SortCommand">
-        <HeaderStyle 
-            HorizontalAlign="Center" 
-            ForeColor="#FFFFFF" 
-            BackColor="#000080" 
-            Font-Bold=true
-            CssClass="TableHeader" />
-        <Columns>
-           <asp:BoundColumn DataField="Name" 
-               HeaderText="Name"  
-               SortExpression="Name"></asp:BoundColumn>
-           <asp:BoundColumn DataField="CompanyName" 
-               HeaderText="Company Name"  
-               SortExpression="CompanyName">
-           </asp:BoundColumn>
-           <asp:BoundColumn DataField="Version" 
-               HeaderText="Version"  
-               SortExpression="Version">
-           </asp:BoundColumn>
-           <asp:BoundColumn DataField="Size" 
-               HeaderText="Size"  
-               SortExpression="Size">
-           </asp:BoundColumn>
-           <asp:BoundColumn DataField="ReleaseData" 
-               HeaderText="Release data"  
-               SortExpression="ReleaseData">
-           </asp:BoundColumn>
-           <asp:BoundColumn DataField="URL" 
-               HeaderText="URL"  
-               SortExpression="URL">
-           </asp:BoundColumn>
-           <asp:BoundColumn DataField="Vendor" 
-               HeaderText="Vendor"  
-               SortExpression="Vendor">
-           </asp:BoundColumn>
-        </Columns>
-    </asp:DataGrid>
+    
+    <div >
+        <div style="width:70%; margin-left: 150px;">
+            <asp:Label ID="CompanyFilter" runat="server" Text="Company Filter" BorderColor="White"></asp:Label>
+            <asp:DropDownList runat="server" AutoPostBack="true" ID="CompanyNameList" OnSelectedIndexChanged="CompanyNameList_SelectedIndexChanged">
+            </asp:DropDownList>
+            <asp:DataGrid id="datagrid" runat="server" 
+                AllowSorting="True"
+                AutoGenerateColumns="true" 
+                OnSortCommand="datagrid_SortCommand">
+                <HeaderStyle 
+                    HorizontalAlign="Center" 
+                    ForeColor="#FFFFFF" 
+                    BackColor="#111" 
+                    Font-Bold=true
+                    CssClass="TableHeader" />
+                <Columns>
+                </Columns>
+            </asp:DataGrid>
+        </div>
+        <div style="
+    height: 100%;width: 150px;position: fixed;z-index: 1;
+    top: 0;left: 0;background-color: #111;color: #fff; padding-top: 60px;">
+            <asp:CheckBoxList ID="CategoryList"  runat="server" OnSelectedIndexChanged="CategoryList_SelectedIndexChanged" AutoPostBack="True"></asp:CheckBoxList>
+        </div>
+    </div>
 </asp:Content>

@@ -13,7 +13,7 @@ namespace Task.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201802162028236_migration"; }
+            get { return "201802172216440_migration"; }
         }
         
         string IMigrationMetadata.Source
